@@ -1,0 +1,460 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+*{
+  font-family: sans-serif
+}
+/******************** Parte de arriba ********************/
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000000; /* Azul eléctrico original */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.navbar a:hover {
+  opacity: 0.6;
+}
+
+/* --- NAVBAR SUPERIOR --- */
+.navbar.top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Tres columnas perfectas para centrar el logo */
+  align-items: center;
+  padding: 10px 40px;
+  border-bottom: 1px solid #364e44;
+}
+
+/* Alineación exacta por bloques */
+.navbar.top .nav-left {
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.navbar.top .nav-center {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar.top .nav-right {
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+/* Ajuste del tamaño del logo animado */
+.logo-navbar {
+  height: 32px; /* Ajusta según el tamaño de tu .gif */
+  display: block;
+}
+
+/* Iconos y carrito */
+.nav-right i {
+  font-style: normal;
+  font-size: 14px;
+}
+
+/* --- NAVBAR INFERIOR (CATEGORÍAS) --- */
+.navbar.bottom {
+  padding: 12px 40px;
+  border-bottom: 1px solid #364e44;
+}
+
+.navbar.bottom .nav-categories {
+  justify-content: flex-start;
+  gap: 25px;
+}
+
+/* Color rojo/naranja destacado para Special Prices */
+.navbar.bottom a.special {
+  color: #e24c27;
+}
+
+/* --- COMENTADO: Estilo del botón "?" por si se activa en el futuro ---
+.help-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0000bc;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+*/
+/* Enlace contenedor para que toda la sección sea clickeable */
+/******************** Enlace contenedor ********************/
+.hero-banner-link {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+/* Caja gigante principal de lado a lado */
+.hero-banner {
+  width: 100%;
+  height: 712px;
+  background-color: #000000; /* Fondo negro base mientras cargan imágenes */
+  display: grid;
+  /* Nota: Cuando actives las 3 columnas, cambia '1fr' por '1fr 1fr 1fr' */
+  grid-template-columns: 1fr; 
+  overflow: hidden;
+}
+
+/* Propiedades comunes para cada una de las 3 columnas */
+.banner-column {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Imagen de fondo de la columna */
+.column-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción de la foto sin deformar */
+  display: block;
+}
+
+/* Capa contenedor del texto centrado (Solo en la columna del medio) */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical */
+  align-items: center;     /* Centrado horizontal */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+  pointer-events: none;    /* Permite que el click traspase al enlace principal */
+}
+
+/* Texto: New Drop */
+.drop-subtitle {
+  color: #ffffff;
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra para legibilidad */
+}
+
+/* Texto: OUT NOW */
+.drop-title {
+  color: #ffffff;
+  font-size: 6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: -5px 0 0 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/******************** Cajitas productos ********************/
+
+.products-section {
+  padding: 40px;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.section-title {
+  color: #000000; /* Azul eléctrico característico */
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* Fila de exactamente 5 columnas de igual tamaño */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px; /* Espaciado ajustado entre tarjetas */
+}
+
+.product-card {
+  position: relative;
+  background-color: #eef1ff; /* Fondo celeste/grisáceo suave de las imágenes */
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Proporción idéntica a la imagen */
+  overflow: hidden;
+}
+
+.product-image-container img, 
+.product-image-container picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Etiqueta "NEW IN" */
+.product-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000000;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 2px;
+  z-index: 3;
+}
+
+/* Efecto de cambio de imagen en hover */
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.product-card:hover .hover-image {
+  opacity: 1;
+}
+
+/* Bloque de información inferior */
+.product-info {
+  padding: 12px 4px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: #ffffff;
+}
+
+.product-name {
+  text-decoration: none;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.product-price {
+  color: #000000;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* Círculos de color */
+.product-colors {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.color-circle {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: inline-block;
+}
+
+/* Contenedor de tallas que aparece abajo */
+.product-sizes {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+  background-color: #ffffff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Despliegue en hover */
+.product-card:hover .product-sizes {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botones de tallas en azul eléctrico */
+.size-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.1s ease;
+}
+
+.size-btn:hover {
+  transform: scale(1.25);
+}
+
+/* =========================================================================
+     ESTILOS DE LA SECCIÓN DE CATEGORÍAS (3 Columnas con Gap)
+     ========================================================================= -->
+.categories-section {
+  padding: 0 15px; /* Pequeño margen en los bordes de la pantalla */
+  margin-bottom: 60px;
+  background-color: #ffffff;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas exactamente iguales */
+  gap: 15px; /* El espacio entre los divs para que quede ordenado y bacán */
+}
+
+.category-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Cuadrado perfecto, puedes cambiarlo si tus fotos son más altas */
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+
+.category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Efecto zoom sutil en la imagen al pasar el mouse */
+.category-card:hover .category-img {
+  transform: scale(1.03);
+}
+
+/* Texto en cursiva y negrita en la esquina inferior izquierda */
+.category-text {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: capitalize;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Sombra para que se lea bien sobre cualquier foto */
+}
+
+/* Modificación para que "All Products" mantenga el estilo exacto de la foto */
+.category-card:last-child .category-text {
+  text-transform: none; /* Mantiene letras mayúsculas y minúsculas combinadas */
+}
+
+
+/* =========================================================================
+     ESTILOS DEL FOOTER (Línea Recta Azul)
+     ========================================================================= */
+.site-footer {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #ffffff;
+}
+
+/* Fila de los 3 bloques informativos de arriba */
+.footer-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-icon {
+  font-size: 20px;
+  color: #0000bc;
+}
+
+.feature-item h3 {
+  color: #0000bc; /* Azul eléctrico */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Contenedor principal azul (Corte recto sin curvas) */
+.footer-blue-block {
+  background-color: #0000bc; /* Azul eléctrico original */
+  padding: 60px 40px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor central de los enlaces en 2 columnas */
+.footer-links-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px; /* Separación entre columnas de texto */
+  width: 100%;
+  max-width: 600px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+  opacity: 0.7;
+}
+
+/* Bloque inferior de Copyright */
+.footer-copyright {
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 60px;
+  opacity: 0.9;
+}
