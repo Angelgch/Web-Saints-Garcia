@@ -2,6 +2,9 @@
 *{
   font-family: sans-serif
 }
+body{
+  margin:0;
+}
 /******************** Parte de arriba ********************/
 .navbar {
   width: 100%;
@@ -320,7 +323,7 @@
 
 /* =========================================================================
      ESTILOS DE LA SECCIÓN DE CATEGORÍAS (3 Columnas con Gap)
-     ========================================================================= -->
+     ========================================================================= --> */
 .categories-section {
   padding: 0 15px; /* Pequeño margen en los bordes de la pantalla */
   margin-bottom: 60px;
