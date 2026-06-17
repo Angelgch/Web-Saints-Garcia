@@ -1,12 +1,6 @@
 /* --- CONFIGURACIÓN GENERAL --- */
 
-*{
-  box-sizing: border-box;
-}
-body{
-  margin: 0;
-  font-family: sans-serif;
-}
+
 
 /******************** Parte de arriba ********************/
 .navbar {
