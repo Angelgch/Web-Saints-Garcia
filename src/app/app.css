@@ -1,14 +1,17 @@
 /* --- CONFIGURACIÓN GENERAL --- */
+
 *{
-  font-family: sans-serif
+  box-sizing: border-box;
 }
 body{
-  margin:0;
+  margin: 0;
+  font-family: sans-serif;
 }
+
 /******************** Parte de arriba ********************/
 .navbar {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #364E44;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   box-sizing: border-box;
 }
@@ -40,7 +43,7 @@ body{
   grid-template-columns: 1fr auto 1fr; /* Tres columnas perfectas para centrar el logo */
   align-items: center;
   padding: 10px 40px;
-  border-bottom: 1px solid #364e44;
+  border-bottom: 1px solid #000000;
 }
 
 /* Alineación exacta por bloques */
@@ -177,7 +180,9 @@ body{
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/******************** Cajitas productos ********************/
+/* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ 
+/* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ 
+/* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS *//* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ /* LOS 12 PRODUCTOS */ 
 
 .products-section {
   padding: 40px;
@@ -186,31 +191,34 @@ body{
 }
 
 .section-title {
-  color: #000000; /* Azul eléctrico característico */
-  font-size: 14px;
+  color: #000000;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   letter-spacing: 0.5px;
+  text-align: left; /* Alineado a la izquierda para mantener la simetría */
 }
 
-/* Fila de exactamente 5 columnas de igual tamaño */
+/* Reconfiguración estricta a 4 columnas */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px; /* Espaciado ajustado entre tarjetas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 16px; /* 30px de espacio entre filas, 16px entre columnas */
 }
 
+/* Cada tarjeta ahora actúa como el "cuadro" contenedor de la ropa */
 .product-card {
   position: relative;
-  background-color: #eef1ff; /* Fondo celeste/grisáceo suave de las imágenes */
+  background-color: #eef1ff; /* El fondo celeste/grisáceo suave original de tus cajas */
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .product-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4; /* Proporción idéntica a la imagen */
+  aspect-ratio: 3 / 4; /* Proporción vertical idéntica a tus fotos */
   overflow: hidden;
 }
 
@@ -236,7 +244,7 @@ body{
   z-index: 3;
 }
 
-/* Efecto de cambio de imagen en hover */
+/* Cambio de imagen rápido (Hover) */
 .hover-image {
   position: absolute;
   top: 0;
@@ -250,76 +258,84 @@ body{
   opacity: 1;
 }
 
-/* Bloque de información inferior */
+/* Info del producto fijada abajo con alineación ordenada a la izquierda */
 .product-info {
-  padding: 12px 4px 4px 4px;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  background-color: #ffffff;
+  align-items: flex-start; /* Todo alineado rigurosamente a la izquierda */
+  gap: 4px;
+  background-color: #ffffff; /* El texto se monta sobre fondo blanco limpio fuera de la foto */
 }
 
 .product-name {
+  font-family: 'Courier New', Courier, monospace, serif; /* Cambiado a la fuente gótica exacta */
   text-decoration: none;
   color: #000000;
-  font-size: 10px;
+  font-size: 20px; /* Subido el tamaño para que luzcan los detalles góticos */
   font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: none; /* OBLIGATORIO: Permite usar minúsculas como en tu imagen */
 }
 
-.product-price {
-  color: #000000;
-  font-size: 10px;
-  font-weight: 400;
-}
 
-/* Círculos de color */
-.product-colors {
+
+/* Contenedores de precios ordenados a la izquierda */
+.price-container {
   display: flex;
-  gap: 4px;
-  margin-top: 2px;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
 }
 
-.color-circle {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  display: inline-block;
+.normal-price .product-price {
+  color: #000000;
+  font-weight: 500;
 }
 
-/* Contenedor de tallas que aparece abajo */
-.product-sizes {
+.sale-price .current-price {
+  color: #000000;
+  font-weight: 500;
+}
+
+.sale-price .old-price {
+  color: #888888;
+  text-decoration: line-through; /* Línea de rebaja */
+  font-size: 10px;
+}
+
+/* =========================================================================
+     REGLAS PREPARADAS PARA CUANDO IMPLEMENTES LAS TALLAS (FUTURO)
+     ========================================================================= -->
+.product-sizes-future {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  padding: 12px 0;
+  gap: 15px;
+  padding: 10px 0;
   background-color: #ffffff;
+  position: absolute;
+  bottom: 50px; Se posiciona encima del bloque de texto 
+  left: 0;
+  width: 100%;
+  z-index: 4;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Despliegue en hover */
-.product-card:hover .product-sizes {
+.product-card:hover .product-sizes-future {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Botones de tallas en azul eléctrico */
 .size-btn {
   background: none;
   border: none;
   color: #000000;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
-  padding: 2px;
-  transition: transform 0.1s ease;
-}
-
-.size-btn:hover {
-  transform: scale(1.25);
-}
+}*/
 
 /* =========================================================================
      ESTILOS DE LA SECCIÓN DE CATEGORÍAS (3 Columnas con Gap)
@@ -387,37 +403,9 @@ body{
   background-color: #ffffff;
 }
 
-/* Fila de los 3 bloques informativos de arriba */
-.footer-features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.feature-icon {
-  font-size: 20px;
-  color: #0000bc;
-}
-
-.feature-item h3 {
-  color: #0000bc; /* Azul eléctrico */
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
 /* Contenedor principal azul (Corte recto sin curvas) */
 .footer-blue-block {
-  background-color: #0000bc; /* Azul eléctrico original */
+  background-color: #364e44; /* Azul eléctrico original */
   padding: 60px 40px 30px 40px;
   display: flex;
   flex-direction: column;
