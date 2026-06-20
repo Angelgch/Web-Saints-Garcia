@@ -1,6 +1,7 @@
 /* --- CONFIGURACIÓN GENERAL --- */
-
-
+body{
+  font-family: sans-serif;
+}
 
 /******************** Parte de arriba ********************/
 .navbar {
