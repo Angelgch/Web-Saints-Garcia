@@ -2,42 +2,83 @@
 <link rel="stylesheet" href="app.css">
 
 <header class="main-header">
-<nav class="navbar top">
-  <ul class="nav-left">
-    <li><a href="##">ALL PRODUCTS</a></li>
-    <li><a href="##">NEW DROP</a></li>
-    <li><a href="##">BESTSELLERS</a></li>
-    <li><a href="##">CLUB SAINTS GARCIA <i class="bi bi-people"></i></a></li>
-    <!-- <li><a href="##">FAMILY<i class="bi bi-people"></i></a></li> -->
-    <li><a href="##">CONTACT</a></li>
-    <li><a href="##">INFO</a></li>
-  </ul>
+  <nav class="navbar top">
+    <ul class="nav-left">
+      <li>
+        <button class="menu-toggle-btn" (click)="toggleMenu()">
+          MENU<i class="bi bi-list"></i>
+        </button>
+      </li>
+      <li><a href="##">NEW DROP</a></li>
+      <li><a href="##">BESTSELLERS</a></li>
+      <li><a href="##">CLUB SAINTS GARCIA <i class="bi bi-people"></i></a></li>
+    </ul>
 
-  <div class="nav-center">
-    <a href="##">
-      <img src="Extra/Logo360.gif" alt="SG-STORE Logo" class="logo-navbar">
-    </a>
-  </div>
+    <div class="nav-center">
+      <a href="##">
+        <img src="Extra/Logo360.gif" alt="SG-STORE Logo" class="logo-navbar">
+      </a>
+    </div>
 
-  <ul class="nav-right">
-    <li><a href="##"><i class="icon-user"><i class="bi bi-person"></i></i></a></li>
-    <li><a href="##"><i class="icon-search"><i class="bi bi-search"></i></i></a></li>
-    <li><a href="##" class="cart-text"><i class="bi bi-cart"></i></a></li>
-  </ul>
-</nav>
-
-<nav class="navbar bottom">
-  <ul class="nav-categories">
-    <li><a href="##">T-SHIRTS</a></li>
-    <li><a href="##">HOODIES</a></li>
-    <li><a href="##">PANTS</a></li>
-    <li><a href="##">JEANS</a></li>
-    <li><a href="##">JORTS</a></li>
-    <li><a href="##">ACCESSORIES</a></li>
-    <li><a href="##" class="special">SPECIAL PRICES</a></li>
-  </ul>
-</nav>
+    <ul class="nav-right">
+      <li>
+        <button class="menu-toggle-btn" (click)="toggleSearch()">
+          <i class="bi bi-search"></i>
+        </button>
+      </li>
+      <li><a href="##" class="cart-text"><i class="bi bi-cart"></i></a>
+      </li>
+      <li><a href="##"><i class="bi bi-person"></i></a></li>
+      <li>
+    </ul>
+  </nav>
 </header>
+
+<div class="search-overlay" [class.active]="isSearchOpen" (click)="toggleSearch()"></div>
+
+<div class="search-panel-top" [class.active]="isSearchOpen">
+  <div class="search-wrapper">
+    <div class="search-input-container">
+      <i class="bi bi-search search-icon-inside"></i>
+      <input type="text" placeholder="WHAT ARE YOU LOOKING FOR?" autofocus class="search-input-field">
+    </div>
+    <button class="close-search-btn" (click)="toggleSearch()">&#10005;</button>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MENÚ LATERAL DESPLEGABLE (STYLE SIDEBAR OVER)
+     ========================================================================= -->
+<!-- El 'active' se inyectará automáticamente gracias a Angular cuando des clic -->
+<div class="sidebar-menu-overlay" [class.active]="isMenuOpen" (click)="toggleMenu()"></div>
+<div class="sidebar-menu-panel" [class.active]="isMenuOpen">
+  <!-- Botón de Cerrar (X) -->
+  <button class="close-menu-btn" (click)="toggleMenu()">&#10005;</button>
+
+  <div class="sidebar-content">
+    <ul class="sidebar-links-products">
+      <li><a href="##">T-SHIRTS</a></li>
+      <li><a href="##">HOODIES</a></li>
+      <li><a href="##">PANTS</a></li>
+      <li><a href="##">JEANS</a></li>
+      <li><a href="##">JORTS</a></li>
+      <li><a href="##">ACCESSORIES</a></li>
+      <li><a href="##" class="special-link">SPECIAL PRICES</a></li>
+    </ul>
+
+    <div class="sidebar-divider"></div>
+
+    <ul class="sidebar-links-secondary">
+      <li><a href="##">Family & Club</a></li>
+      <li><a href="##">Store Locator</a></li>
+      <li><a href="##">Customer Service</a></li>
+      <li><a href="##">Contact</a></li>
+      <li><a href="##">Info</a></li>
+
+
+    </ul>
+  </div>
+</div>
 <!-- =========================================================================
      SECCIÓN DE BANNER PRINCIPAL
      ========================================================================= -->
@@ -56,43 +97,47 @@
     </div>
 </a>
 <!-- =========================================================================
-     SECCIÓN DE PRODUCTOS DESTACADOS 12 Columnas fijas)
+     SECCIÓN DE PRODUCTOS DESTACADOS 10 Columnas fijas NEW DROP)
      ========================================================================= -->
-<section class="products-section">
-  <h2 class="section-title">MOST POPULAR</h2>
+<section class="slider-section">
+  <div class="slider-header">
+    <div class="header-left">
+      <h2 class="slider-title">NEW DROP</h2>
+      <a href="###" class="view-all-link">View all</a>
+    </div>
+    <div class="slider-arrows">
+      <button class="arrow-btn" onclick="scrollSlider('newDropGrid', -1)">&#10094;</button>
+      <button class="arrow-btn" onclick="scrollSlider('newDropGrid', 1)">&#10095;</button>
+    </div>
+  </div>
 
-  <div class="products-grid">
+  <div class="products-slider-container" id="newDropGrid">
     
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
           <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="FLOWER SHIRT BLACK">
-          </picture>
-          <img src="###" alt="FLOWER SHIRT BLACK HOVER" class="hover-image">
+          <img src="public/Ropa/SG_JtGreen.png" alt="SG 1" class="main-image">
+          <img src="public/Modelos/SG_MJtG.png" alt="SG 1 HOVER" class="hover-image">
         </div>
       </a>
       <div class="product-info">
-        <a href="###" class="product-name">T-SHIRT 87753</a>
+        <a href="###" class="product-name">SG-GREEN JACKET</a>
         <div class="price-container normal-price">
           <span class="product-price">S/. 174.00</span>
         </div>
       </div>
-      </div>
+    </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="FLOWER SHIRT LIGHT BLUE">
-          </picture>
-          <img src="###" alt="FLOWER SHIRT LIGHT BLUE HOVER" class="hover-image">
+          <img src="public/Ropa/SG_JtG.png" alt="SG 2" class="main-image">
+          <img src="/Ropa/SG_CapGray_Hover.png" alt="SG 2 HOVER" class="hover-image">
         </div>
       </a>
       <div class="product-info">
-        <a href="###" class="product-name">FLOWER SHIRT LIGHT BLUE</a>
+        <a href="###" class="product-name">SG-GRAY JACKET</a>
         <div class="price-container sale-price">
           <span class="current-price">S/. 142.00</span>
           <span class="old-price">S/. 174.00</span>
@@ -100,142 +145,102 @@
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="FLOWER JORTS BLACK">
-          </picture>
-          <img src="###" alt="FLOWER JORTS BLACK HOVER" class="hover-image">
+          <img src="/Ropa/SG_JacketBlack.png" alt="SG 3" class="main-image">
+          <img src="/Ropa/SG_JacketBlack_Hover.png" alt="SG 3 HOVER" class="hover-image">
         </div>
       </a>
       <div class="product-info">
-        <a href="###" class="product-name">FLOWER JORTS BLACK</a>
-        <div class="price-container sale-price">
-          <span class="current-price">S/. 231.00</span>
-          <span class="old-price">S/. 283.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <a href="###" class="product-link">
-        <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="FLOWER JORTS BROWN">
-          </picture>
-          <img src="###" alt="FLOWER JORTS BROWN HOVER" class="hover-image">
-        </div>
-      </a>
-      <div class="product-info">
-        <a href="###" class="product-name">FLOWER JORTS BROWN</a>
+        <a href="###" class="product-name">SG-BLACK DENIM JACKET</a>
         <div class="price-container normal-price">
           <span class="product-price">S/. 231.00</span>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="HERITAGE DENIM JORTS BLACK">
-          </picture>
-          <img src="###" alt="HERITAGE DENIM JORTS BLACK HOVER" class="hover-image">
+          <img src="/Ropa/SG_JortsBlack.png" alt="SG 4" class="main-image">
+          <img src="/Ropa/SG_JortsBlack_Hover.png" alt="SG 4 HOVER" class="hover-image">
         </div>
       </a>
       <div class="product-info">
-        <a href="###" class="product-name">HERITAGE DENIM JORTS BLACK</a>
+        <a href="###" class="product-name">SG-BLACK DENIM JORTS</a>
+        <div class="price-container normal-price">
+          <span class="product-price">S/. 231.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card-slide">
+      <a href="###" class="product-link">
+        <div class="product-image-container">
+          <img src="/Ropa/SG_ShirtFlower.png" alt="SG 5" class="main-image">
+          <img src="/Ropa/SG_ShirtFlower_Hover.png" alt="SG 5 HOVER" class="hover-image">
+        </div>
+      </a>
+      <div class="product-info">
+        <a href="###" class="product-name">SG-FLOWER SHIRT BLACK</a>
+        <div class="price-container normal-price">
+          <span class="product-price">S/. 174.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card-slide">
+      <a href="###" class="product-link">
+        <div class="product-image-container">
+          <img src="/Ropa/SG_PantsCargo.png" alt="SG 6" class="main-image">
+          <img src="/Ropa/SG_PantsCargo_Hover.png" alt="SG 6 HOVER" class="hover-image">
+        </div>
+      </a>
+      <div class="product-info">
+        <a href="###" class="product-name">SG-STREETWEAR CARGO PANTS</a>
+        <div class="price-container normal-price">
+          <span class="product-price">S/. 210.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================================================
+     SECCIÓN DE PRODUCTOS DESTACADOS 10 Columnas fijas BESTSELLERS)
+     ========================================================================= -->
+<section>
+     <div class="slider-header">
+    <div class="header-left">
+      <h2 class="slider-title">BESTSELLERS</h2>
+      <a href="###" class="view-all-link">View all</a>
+    </div>
+    <div class="slider-arrows">
+      <button class="arrow-btn" onclick="scrollSlider('bestsellersGrid', -1)">&#10094;</button>
+      <button class="arrow-btn" onclick="scrollSlider('bestsellersGrid', 1)">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="products-slider-container" id="bestsellersGrid">
+    
+    <div class="product-card-slide">
+      <a href="###" class="product-link">
+        <div class="product-image-container">
+          <img src="###" alt="PRODUCTO 6" class="main-image">
+        </div>
+      </a>
+      <div class="product-info">
+        <a href="###" class="product-name">HERITAGE DENIM JORTS</a>
         <div class="price-container normal-price">
           <span class="product-price">S/. 180.00</span>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO SEIS">
-          </picture>
-          <img src="###" alt="PRODUCTO SEIS HOVER" class="hover-image">
-        </div>
-      </a>
-      <div class="product-info">
-        <a href="###" class="product-name">ELIXIR GRAY DENIM CAP</a>
-        <div class="price-container sale-price">
-          <span class="current-price">S/. 120.00</span>
-          <span class="old-price">S/. 150.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <a href="###" class="product-link">
-        <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO SIETE">
-          </picture>
-          <img src="###" alt="PRODUCTO SIETE HOVER" class="hover-image">
-        </div>
-      </a>
-      <div class="product-info">
-        <a href="###" class="product-name">ELIXIR OVERSIZED HOODIE</a>
-        <div class="price-container normal-price">
-          <span class="product-price">S/. 260.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <a href="###" class="product-link">
-        <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO OCHO">
-          </picture>
-          <img src="###" alt="PRODUCTO OCHO HOVER" class="hover-image">
-        </div>
-      </a>
-      <div class="product-info">
-        <a href="###" class="product-name">STREETWEAR CARGO PANTS</a>
-        <div class="price-container normal-price">
-          <span class="product-price">S/. 210.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <a href="###" class="product-link">
-        <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO NUEVE">
-          </picture>
-          <img src="###" alt="PRODUCTO NUEVE HOVER" class="hover-image">
-        </div>
-      </a>
-      <div class="product-info">
-        <a href="###" class="product-name">BASIC LOGO T-SHIRT</a>
-        <div class="price-container normal-price">
-          <span class="product-price">S/. 95.00</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <a href="###" class="product-link">
-        <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO DIEZ">
-          </picture>
-          <img src="###" alt="PRODUCTO DIEZ HOVER" class="hover-image">
+          <img src="###" alt="PRODUCTO 7" class="main-image">
         </div>
       </a>
       <div class="product-info">
@@ -247,38 +252,44 @@
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO ONCE">
-          </picture>
-          <img src="###" alt="PRODUCTO ONCE HOVER" class="hover-image">
+          <img src="###" alt="PRODUCTO 8" class="main-image">
         </div>
       </a>
       <div class="product-info">
-        <a href="###" class="product-name">GRAPHIC SWEATSHIRT</a>
+        <a href="###" class="product-name">BASIC LOGO T-SHIRT</a>
         <div class="price-container normal-price">
-          <span class="product-price">S/. 190.00</span>
+          <span class="product-price">S/. 95.00</span>
         </div>
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card-slide">
       <a href="###" class="product-link">
         <div class="product-image-container">
-          <span class="product-badge">NEW IN</span>
-          <picture class="main-image">
-            <img src="###" alt="PRODUCTO DOCE">
-          </picture>
-          <img src="###" alt="PRODUCTO DOCE HOVER" class="hover-image">
+          <img src="###" alt="PRODUCTO 9" class="main-image">
         </div>
       </a>
       <div class="product-info">
         <a href="###" class="product-name">BAGGY DENIM JEANS</a>
         <div class="price-container normal-price">
           <span class="product-price">S/. 240.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card-slide">
+      <a href="###" class="product-link">
+        <div class="product-image-container">
+          <img src="###" alt="PRODUCTO 10" class="main-image">
+        </div>
+      </a>
+      <div class="product-info">
+        <a href="###" class="product-name">STREETWEAR CARGO PANTS</a>
+        <div class="price-container normal-price">
+          <span class="product-price">S/. 210.00</span>
         </div>
       </div>
     </div>
@@ -293,7 +304,7 @@
   <div class="categories-grid">
     
     <a href="###" class="category-card">
-      <img src="###" alt="Hoodies Category" class="category-img">
+      <img src="public/Modelos/SG_M_JG.png" alt="Hoodies Category" class="category-img">
       <div class="category-text">HOODIES</div>
     </a>
 
@@ -309,7 +320,9 @@
 
   </div>
 </section>
-
+<!-- =========================================================================
+     SECCIÓN DE FOOTER
+     ========================================================================= -->
 <footer class="site-footer">
 
   <div class="footer-blue-block">
@@ -331,9 +344,7 @@
     </div>
 
     <div class="footer-copyright">
-      © 2026 SAINTS GARCIA™ 
-      <br>
-      DESIGNED BY ANGEL GARCIA
+      © 2026 SAINTS GARCIA™
     </div>
   </div>
 
