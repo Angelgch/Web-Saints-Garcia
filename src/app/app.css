@@ -5,6 +5,10 @@ body{
 
 /******************** Parte de arriba (Navbar Simplificado) ********************/
 /******************** Parte de arriba ********************/
+.header{
+  border-bottom: 2px solid #364e44;
+  border-top: 2px solid #364e44;
+}
 .navbar {
   width: 100%;
   background-color: #ffffff;
@@ -66,10 +70,9 @@ body{
   display: grid;
   grid-template-columns: 1fr auto 1fr; /* Tres columnas perfectas para centrar el logo */
   align-items: center;
-  padding: 10px 40px;
-  border-bottom: 2px solid #364e44;
-  border-top: 2px solid #364e44;
-
+  padding: 20px 40px;
+  /*border-bottom: 2px solid #364e44;
+  border-top: 2px solid #364e44;*/
 }
 
 /* Alineación exacta por bloques */
@@ -83,6 +86,10 @@ body{
 .navbar.top .nav-center {
   display: flex;
   justify-content: center;
+}
+.logo-navbar {
+
+  display: block;
 }
 
 .navbar.top .nav-right {
